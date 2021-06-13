@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/zealic/go2node/ipc"
+	"github.com/csystem-it/go2node/ipc"
 )
 
 // NodeMessage node ipc message
