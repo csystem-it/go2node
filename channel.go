@@ -42,6 +42,15 @@ func ExecNode(cmd *exec.Cmd) (NodeChannel, error) {
 	return newNodeChannel(ipcChannel)
 }
 
+func PrepareNode(cmd *exec.Cmd) (NodeChannel, error) {
+	ipcChannel, e := ipc.Prepare(cmd, nodeChannelFD)
+	if e != nil {
+		return nil, e
+	}
+
+	return newNodeChannel(ipcChannel)
+}
+
 func newNodeChannel(ipc ipc.Channel) (NodeChannel, error) {
 	// Handle message
 	readChan := make(chan *NodeMessage, 1)
