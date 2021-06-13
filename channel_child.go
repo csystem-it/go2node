@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/zealic/go2node/ipc"
+	"github.com/csystem-it/go2node/ipc"
 )
 
 // RunAsNodeChild setup current process as node child process
