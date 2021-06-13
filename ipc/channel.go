@@ -21,8 +21,7 @@ type channel struct {
 	reader *bufio.Reader
 }
 
-// Exec execute new child process with ipc channel, ipc fd will pass by fdEnvVarName
-func Exec(cmd *exec.Cmd, fdEnvVarName string) (Channel, error) {
+func Prepare(cmd *exec.Cmd, fdEnvVarName string) (Channel, error) {
 	fds, err := Socketpair()
 	if err != nil {
 		return nil, err
@@ -35,6 +34,16 @@ func Exec(cmd *exec.Cmd, fdEnvVarName string) (Channel, error) {
 
 	// Handle message
 	channel := makeChannel(localSock)
+	return channel, nil
+}
+
+// Exec execute new child process with ipc channel, ipc fd will pass by fdEnvVarName
+func Exec(cmd *exec.Cmd, fdEnvVarName string) (Channel, error) {
+	channel, err := Prepare(cmd, fdEnvVarName)
+	if err != nil {
+		return nil, err
+	}
+	
 	err = cmd.Start()
 	if err != nil {
 		return nil, err
