@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/zealic/go2node/ipc"
+	"github.com/csystem-it/go2node/ipc"
 )
 
 // NodeChannel node ipc channel
