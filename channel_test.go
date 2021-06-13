@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/csystem-it/go2node/ipc""
+	"github.com/csystem-it/go2node/ipc"
 )
 
 const testFile = "testdata/channel_test.js"
